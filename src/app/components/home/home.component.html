@@ -1,0 +1,17 @@
+<app-navigation-bar></app-navigation-bar>
+
+<h1 align="center">Home Page</h1>
+
+<h4>Check user roles and Navigate Pages</h4>
+<h6>Admin has checked as default</h6>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label formArrayName="roles" *ngFor="let order of form.controls.roles.controls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{rolesData[i].name}}
+  </label>
+
+  <div *ngIf="!form.valid">At least one order must be selected</div>
+  <br>
+  <button [disabled]="!form.valid">submit</button>
+</form>
